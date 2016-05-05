@@ -8,8 +8,10 @@
         <link href="print.css" rel="stylesheet" media="print"/>
         <!--CUSTOM JQUERY THEME FILES-->
         <link href="custom/jquery-ui.css" rel="stylesheet"/>
+        <script src="jquery-2.2.3.js" type="text/javascript"></script>
         <script src="custom/jquery-ui.min.js" type="text/javascript"></script>
         <script src="custom/jquery-ui.js" type="text/javascript"></script>
+        <script src="regex.js" type="text/javascript"></script>
 
         
         <title>
@@ -123,22 +125,55 @@
             #interest3,#interest6,#interest9{
                 left: 280px;
             }
-            
+            </style>
         
+        <script type="text/javascript">
+        //CALL THIS FUNCTION WHEN FORM IS SUBMITTED
+        $(function(){
         
+        $( "#contactForm" ).submit(function( event ) {
+        var msg="";
+            if (kapcha != $('#kapcha').val()){
+                var msg="Your value for the validation text is incorrect";
+                }
+            if (msg > 0){
+                function(event.preventDefault());
+                alert(msg);
+            });
+        //alert( "Handler for #target.submit() called." );
+        //event.preventDefault();
+        });
+        </script>    
+        };
+        </script>-->
         
+        <!--EXAMPLE-->
+        <form id="target" action="destination.html">
+          <input type="text" value="Hello there">
+          <input type="submit" value="Go">
+            </form>
+        <div id="other">
+          Trigger the handler
+        </div>
+        <script type="text/javascript">
+        $( "#target" ).submit(function( event ) {
+        alert( "Handler for #target.submit() called." );
+        event.preventDefault();
+        });
+        </script>
         
-        </style>
         <script src="random.js" type="text/javascript">
         
         </script>
         
         <!--CREATING THE JAVASCRIPT FUNCTION-->
         <script type="text/javascript" >
+            var kapcha = "";
             function showImg() {
                 /*The showImg function displays a random image from the 0.jpg through 9.jpg files.
                 The random image is designed to thwart spammers attempting to use the form to send junk email by requiring visual confirmation.*/
                 var imgNumber = randomInteger(9);  //Return a random number from 0 to 9
+                kapcha = kapcha+imgNumber;
                 
                 
                 document.write("<img src='" + imgNumber + ".jpg' alt = ''/>'");
